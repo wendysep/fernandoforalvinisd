@@ -46,35 +46,19 @@
     .header-inner{
       display:flex;
       align-items:center;
-      justify-content:space-between;
+      justify-content:flex-end; /* keep it clean */
       gap:14px;
       padding: 14px 0;
-    }
-    .brand{
-      display:flex;
-      flex-direction:column;
-      gap:2px;
-      text-decoration:none;
-    }
-    .brand strong{
-      font-size:18px;
-      letter-spacing:.2px;
-    }
-    .brand span{
-      font-size:12px;
-      color:var(--muted);
-      letter-spacing:.12em;
-      text-transform:uppercase;
     }
     nav{
       display:flex;
       align-items:center;
-      gap:14px;
+      gap:10px;
       flex-wrap:wrap;
     }
     nav a{
       text-decoration:none;
-      font-weight:600;
+      font-weight:700;
       color:var(--muted);
       font-size:14px;
       padding:8px 10px;
@@ -90,7 +74,7 @@
       gap:8px;
       padding: 10px 14px;
       border-radius: 14px;
-      font-weight:800;
+      font-weight:900;
       text-decoration:none;
       border:2px solid transparent;
       font-size:14px;
@@ -100,6 +84,23 @@
     .btn-primary:hover{ filter: brightness(.96); }
     .btn-outline{ background: var(--white); color: var(--blue); border-color: var(--blue); }
     .btn-outline:hover{ background:#f3f6ff; }
+
+    /* Full-width banner image under navbar */
+    .banner{
+      width:100%;
+      background: #0b1220;
+      border-bottom: 4px solid var(--red);
+    }
+    .banner img{
+      width:100%;
+      height: 360px;
+      object-fit: cover;
+      display:block;
+      filter: none;
+    }
+    @media (max-width: 700px){
+      .banner img{ height: 260px; }
+    }
 
     /* Sections */
     section{ padding: 58px 0; }
@@ -113,67 +114,9 @@
       max-width: 70ch;
     }
 
-    /* Hero */
-    .hero{
-      padding: 56px 0 18px;
-    }
-    .hero-grid{
-      display:grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap:22px;
-      align-items:stretch;
-    }
-    @media (max-width: 900px){
-      .hero-grid{ grid-template-columns:1fr; }
-      nav{ display:none; } /* keeps header clean on mobile */
-    }
-
-    .hero-card{
-      border:1px solid var(--line);
-      border-radius: var(--radius);
-      background: var(--white);
-      box-shadow: var(--shadow);
-      overflow:hidden;
-    }
-    .hero-media{
-      position:relative;
-      min-height: 360px;
-      background:
-        linear-gradient(135deg, rgba(0,74,173,.25), rgba(211,61,56,.18)),
-        radial-gradient(circle at 30% 30%, rgba(0,74,173,.22), transparent 50%),
-        radial-gradient(circle at 70% 70%, rgba(211,61,56,.18), transparent 55%),
-        #ffffff;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:18px;
-    }
-    .hero-media img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      display:block;
-    }
-    .media-note{
-      text-align:center;
-      color:#6b7280;
-      font-weight:800;
-      border:2px dashed #c7d2fe;
-      border-radius: 16px;
-      padding: 26px 18px;
-      width: 100%;
-      max-width: 520px;
-      background: rgba(255,255,255,.75);
-    }
-    .media-note small{
-      display:block;
-      font-weight:600;
-      color:#7a859a;
-      margin-top:8px;
-    }
-
-    .hero-copy{
-      padding: 26px 26px 22px;
+    /* Hero text block (now below banner) */
+    .hero-text{
+      padding: 44px 0 10px;
     }
     .kicker{
       display:inline-block;
@@ -193,7 +136,7 @@
       margin:0 0 18px;
       color: var(--muted);
       font-size: 16px;
-      max-width: 65ch;
+      max-width: 70ch;
     }
     .pill-row{
       display:flex;
@@ -206,18 +149,12 @@
       background:#fafbff;
       padding: 10px 12px;
       border-radius: 999px;
-      font-weight:700;
+      font-weight:800;
       font-size: 13px;
       color:#2a3343;
     }
-    .hero-actions{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      margin-top: 12px;
-    }
 
-    /* Content cards */
+    /* Cards */
     .grid-2{
       display:grid;
       grid-template-columns: 1fr 1fr;
@@ -268,7 +205,11 @@
       gap:18px;
       align-items:center;
     }
-    @media (max-width: 900px){ .callout-inner{ grid-template-columns:1fr; } }
+    @media (max-width: 900px){
+      nav{ display:none; } /* cleaner on mobile */
+      .callout-inner{ grid-template-columns:1fr; }
+      .header-inner{ justify-content:flex-end; }
+    }
     .fineprint{
       color: var(--muted);
       font-size: 12px;
@@ -280,18 +221,7 @@
       font-size: 12px;
       border-top: 1px solid var(--line);
     }
-    .footer-strong{ color: var(--ink); font-weight:800; }
 
-    /* small helper */
-    .note{
-      background:#fff7f6;
-      border:1px solid #ffe1df;
-      color:#7a1f1b;
-      padding:10px 12px;
-      border-radius: 14px;
-      font-size: 13px;
-      margin-top: 12px;
-    }
   </style>
 </head>
 
@@ -301,11 +231,6 @@
   <header>
     <div class="wrap">
       <div class="header-inner">
-        <a class="brand" href="#top">
-          <strong>Fernando Hinojosa</strong>
-          <span>For Alvin ISD Board Trustee • Position 6</span>
-        </a>
-
         <nav>
           <a href="#about">About</a>
           <a href="#mission">Mission &amp; Vision</a>
@@ -313,7 +238,7 @@
         </nav>
 
         <div class="cta-row">
-          <!-- Replace the href links with your real URLs -->
+          <!-- Replace these href links with your real URLs -->
           <a class="btn btn-primary" href="YOUR_DONATE_LINK_HERE" target="_blank" rel="noopener">Donate</a>
           <a class="btn btn-outline" href="YOUR_VOLUNTEER_LINK_HERE" target="_blank" rel="noopener">Volunteer</a>
         </div>
@@ -321,49 +246,27 @@
     </div>
   </header>
 
+  <!-- FULL-WIDTH IMAGE right under nav -->
+  <div class="banner">
+    <!-- Upload an image named header.jpg to the repo root -->
+    <img src="header.jpg" alt="Fernando Hinojosa campaign banner" />
+  </div>
+
   <main id="top">
-    <!-- HERO -->
-    <section class="hero">
+    <!-- HERO TEXT -->
+    <section class="hero-text">
       <div class="wrap">
-        <div class="hero-grid">
-          <div class="hero-card">
-            <div class="hero-copy">
-              <div class="kicker">Strong schools. Strong community.</div>
-              <h1>Putting students and families first.</h1>
-              <p class="lead">
-                I’m running to support strong academics, practical skills, and meaningful parent engagement —
-                so every Alvin ISD student is future ready.
-              </p>
+        <div class="kicker">Strong schools. Strong community.</div>
+        <h1>Putting students and families first.</h1>
+        <p class="lead">
+          I’m running to support strong academics, practical skills, and meaningful parent engagement —
+          so every Alvin ISD student is future ready.
+        </p>
 
-              <div class="pill-row">
-                <div class="pill">Alvin ISD graduate</div>
-                <div class="pill">Former educator</div>
-                <div class="pill">Parent in the district</div>
-              </div>
-
-              <div class="hero-actions">
-                <a class="btn btn-primary" href="YOUR_DONATE_LINK_HERE" target="_blank" rel="noopener">Donate</a>
-                <a class="btn btn-outline" href="YOUR_VOLUNTEER_LINK_HERE" target="_blank" rel="noopener">Volunteer</a>
-              </div>
-
-              <div class="note">
-                Replace <b>YOUR_DONATE_LINK_HERE</b> and <b>YOUR_VOLUNTEER_LINK_HERE</b> with your real links.
-              </div>
-            </div>
-          </div>
-
-          <div class="hero-card">
-            <div class="hero-media">
-              <!-- OPTION 1 (recommended): Upload a hero image named "hero.jpg" to your repo root and uncomment below -->
-              <!-- <img src="hero.jpg" alt="Fernando Hinojosa" /> -->
-
-              <!-- Placeholder until you upload an image -->
-              <div class="media-note">
-                HERO IMAGE GOES HERE
-                <small>Upload an image to the repo (ex: <b>hero.jpg</b>) then uncomment the &lt;img&gt; line in the code.</small>
-              </div>
-            </div>
-          </div>
+        <div class="pill-row">
+          <div class="pill">Alvin ISD graduate</div>
+          <div class="pill">Former educator</div>
+          <div class="pill">Parent in the district</div>
         </div>
       </div>
     </section>
@@ -373,7 +276,7 @@
       <div class="wrap">
         <h2 class="section-title">About Me</h2>
         <p class="section-sub">
-          (Replace this with your preferred bio. Keep it 4–7 sentences for a strong, confident read.)
+          Replace this with your preferred bio (4–7 sentences works great).
         </p>
 
         <div class="card">
@@ -396,7 +299,10 @@
 
         <div class="grid-2">
           <div class="card">
-            <div class="accent"><span class="dot" style="background: var(--blue); box-shadow: 0 0 0 4px rgba(0,74,173,.12);"></span>Mission</div>
+            <div class="accent">
+              <span class="dot" style="background: var(--blue); box-shadow: 0 0 0 4px rgba(0,74,173,.12);"></span>
+              Mission
+            </div>
             <p>
               Strengthen academic outcomes, support educators, and improve communication so families feel informed, welcomed, and heard.
             </p>
@@ -428,7 +334,7 @@
                 Whether you can volunteer an hour, put up a yard sign, or contribute any amount, it truly makes a difference.
               </p>
               <div class="fineprint">
-                Add official disclaimer language here if required for political advertising.
+                Thank you for supporting our campaign.
               </div>
             </div>
 
@@ -443,8 +349,7 @@
 
     <footer>
       <div class="wrap">
-        <div class="footer-strong">Fernando Hinojosa for Alvin ISD Board Trustee • Position 6</div>
-        <div>Political advertising paid for by Fernando Hinojosa Campaign. (Replace with your official disclaimer text.)</div>
+        © Copyright 2026. All rights reserved. Paid for by Fernando for ALVINISD Campaign
       </div>
     </footer>
   </main>
