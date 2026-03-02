@@ -1,12 +1,452 @@
 <!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>My Site</title>
-  </head>
-  <body>
-    <h1>Hello from GitHub Pages</h1>
-    <p>This is my website.</p>
-  </body>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fernando Hinojosa for Alvin ISD</title>
+  <meta name="description" content="Fernando Hinojosa for Alvin ISD Board Trustee, Position 6" />
+  <style>
+    :root{
+      --blue:#004aad;
+      --red:#d63d38;
+      --white:#ffffff;
+      --ink:#0b1220;
+      --muted:#5b6577;
+      --line:#e6e8ef;
+      --bg:#ffffff;
+      --shadow: 0 10px 30px rgba(0,0,0,.08);
+      --radius: 18px;
+      --max: 1050px;
+    }
+    *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
+    body{
+      margin:0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      color:var(--ink);
+      background:var(--bg);
+      line-height:1.5;
+    }
+    a{ color:inherit; }
+    .top-stripe{
+      height:10px;
+      background: linear-gradient(90deg, var(--blue), var(--blue) 55%, var(--red));
+    }
+    .wrap{ max-width: var(--max); margin:0 auto; padding: 0 20px; }
+
+    /* Header */
+    header{
+      position: sticky;
+      top:0;
+      z-index:100;
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+    .header-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      padding: 14px 0;
+    }
+    .brand{
+      display:flex;
+      flex-direction:column;
+      gap:2px;
+      text-decoration:none;
+    }
+    .brand strong{
+      font-size:18px;
+      letter-spacing:.2px;
+    }
+    .brand span{
+      font-size:12px;
+      color:var(--muted);
+      letter-spacing:.12em;
+      text-transform:uppercase;
+    }
+    nav{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+    nav a{
+      text-decoration:none;
+      font-weight:600;
+      color:var(--muted);
+      font-size:14px;
+      padding:8px 10px;
+      border-radius:12px;
+    }
+    nav a:hover{ background:#f3f5fb; color:var(--ink); }
+
+    .cta-row{ display:flex; gap:10px; align-items:center; }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      padding: 10px 14px;
+      border-radius: 14px;
+      font-weight:800;
+      text-decoration:none;
+      border:2px solid transparent;
+      font-size:14px;
+      white-space:nowrap;
+    }
+    .btn-primary{ background: var(--red); color: var(--white); }
+    .btn-primary:hover{ filter: brightness(.96); }
+    .btn-outline{ background: var(--white); color: var(--blue); border-color: var(--blue); }
+    .btn-outline:hover{ background:#f3f6ff; }
+
+    /* Sections */
+    section{ padding: 58px 0; }
+    .section-title{
+      font-size:28px;
+      margin:0 0 10px;
+    }
+    .section-sub{
+      margin:0 0 18px;
+      color:var(--muted);
+      max-width: 70ch;
+    }
+
+    /* Hero */
+    .hero{
+      padding: 56px 0 18px;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:22px;
+      align-items:stretch;
+    }
+    @media (max-width: 900px){
+      .hero-grid{ grid-template-columns:1fr; }
+      nav{ display:none; } /* keeps header clean on mobile */
+    }
+
+    .hero-card{
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--white);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .hero-media{
+      position:relative;
+      min-height: 360px;
+      background:
+        linear-gradient(135deg, rgba(0,74,173,.25), rgba(211,61,56,.18)),
+        radial-gradient(circle at 30% 30%, rgba(0,74,173,.22), transparent 50%),
+        radial-gradient(circle at 70% 70%, rgba(211,61,56,.18), transparent 55%),
+        #ffffff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:18px;
+    }
+    .hero-media img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+    .media-note{
+      text-align:center;
+      color:#6b7280;
+      font-weight:800;
+      border:2px dashed #c7d2fe;
+      border-radius: 16px;
+      padding: 26px 18px;
+      width: 100%;
+      max-width: 520px;
+      background: rgba(255,255,255,.75);
+    }
+    .media-note small{
+      display:block;
+      font-weight:600;
+      color:#7a859a;
+      margin-top:8px;
+    }
+
+    .hero-copy{
+      padding: 26px 26px 22px;
+    }
+    .kicker{
+      display:inline-block;
+      color: var(--blue);
+      font-weight:900;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      font-size:12px;
+      margin-bottom: 10px;
+    }
+    h1{
+      margin: 0 0 10px;
+      font-size: 44px;
+      line-height:1.06;
+    }
+    .lead{
+      margin:0 0 18px;
+      color: var(--muted);
+      font-size: 16px;
+      max-width: 65ch;
+    }
+    .pill-row{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin: 14px 0 18px;
+    }
+    .pill{
+      border:1px solid var(--line);
+      background:#fafbff;
+      padding: 10px 12px;
+      border-radius: 999px;
+      font-weight:700;
+      font-size: 13px;
+      color:#2a3343;
+    }
+    .hero-actions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top: 12px;
+    }
+
+    /* Content cards */
+    .grid-2{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:16px;
+    }
+    @media (max-width: 900px){ .grid-2{ grid-template-columns:1fr; } }
+    .card{
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--white);
+      box-shadow: 0 6px 18px rgba(0,0,0,.05);
+      padding: 18px;
+    }
+    .card h3{
+      margin:0 0 8px;
+      font-size:18px;
+    }
+    .card p{
+      margin:0;
+      color: var(--muted);
+    }
+    .accent{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      font-weight:900;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+    .dot{
+      width:10px; height:10px; border-radius:50%;
+      background: var(--red);
+      box-shadow: 0 0 0 4px rgba(211,61,56,.12);
+    }
+
+    /* Donate/Volunteer section */
+    .callout{
+      border-radius: calc(var(--radius) + 4px);
+      border:1px solid var(--line);
+      overflow:hidden;
+      box-shadow: var(--shadow);
+      background: linear-gradient(135deg, rgba(0,74,173,.10), rgba(255,255,255,1) 50%, rgba(211,61,56,.10));
+    }
+    .callout-inner{
+      padding: 24px;
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:18px;
+      align-items:center;
+    }
+    @media (max-width: 900px){ .callout-inner{ grid-template-columns:1fr; } }
+    .fineprint{
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 10px;
+    }
+    footer{
+      padding: 22px 0 40px;
+      color: var(--muted);
+      font-size: 12px;
+      border-top: 1px solid var(--line);
+    }
+    .footer-strong{ color: var(--ink); font-weight:800; }
+
+    /* small helper */
+    .note{
+      background:#fff7f6;
+      border:1px solid #ffe1df;
+      color:#7a1f1b;
+      padding:10px 12px;
+      border-radius: 14px;
+      font-size: 13px;
+      margin-top: 12px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="top-stripe"></div>
+
+  <header>
+    <div class="wrap">
+      <div class="header-inner">
+        <a class="brand" href="#top">
+          <strong>Fernando Hinojosa</strong>
+          <span>For Alvin ISD Board Trustee • Position 6</span>
+        </a>
+
+        <nav>
+          <a href="#about">About</a>
+          <a href="#mission">Mission &amp; Vision</a>
+          <a href="#get-involved">Donate &amp; Volunteer</a>
+        </nav>
+
+        <div class="cta-row">
+          <!-- Replace the href links with your real URLs -->
+          <a class="btn btn-primary" href="YOUR_DONATE_LINK_HERE" target="_blank" rel="noopener">Donate</a>
+          <a class="btn btn-outline" href="YOUR_VOLUNTEER_LINK_HERE" target="_blank" rel="noopener">Volunteer</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="wrap">
+        <div class="hero-grid">
+          <div class="hero-card">
+            <div class="hero-copy">
+              <div class="kicker">Strong schools. Strong community.</div>
+              <h1>Putting students and families first.</h1>
+              <p class="lead">
+                I’m running to support strong academics, practical skills, and meaningful parent engagement —
+                so every Alvin ISD student is future ready.
+              </p>
+
+              <div class="pill-row">
+                <div class="pill">Alvin ISD graduate</div>
+                <div class="pill">Former educator</div>
+                <div class="pill">Parent in the district</div>
+              </div>
+
+              <div class="hero-actions">
+                <a class="btn btn-primary" href="YOUR_DONATE_LINK_HERE" target="_blank" rel="noopener">Donate</a>
+                <a class="btn btn-outline" href="YOUR_VOLUNTEER_LINK_HERE" target="_blank" rel="noopener">Volunteer</a>
+              </div>
+
+              <div class="note">
+                Replace <b>YOUR_DONATE_LINK_HERE</b> and <b>YOUR_VOLUNTEER_LINK_HERE</b> with your real links.
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-card">
+            <div class="hero-media">
+              <!-- OPTION 1 (recommended): Upload a hero image named "hero.jpg" to your repo root and uncomment below -->
+              <!-- <img src="hero.jpg" alt="Fernando Hinojosa" /> -->
+
+              <!-- Placeholder until you upload an image -->
+              <div class="media-note">
+                HERO IMAGE GOES HERE
+                <small>Upload an image to the repo (ex: <b>hero.jpg</b>) then uncomment the &lt;img&gt; line in the code.</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="wrap">
+        <h2 class="section-title">About Me</h2>
+        <p class="section-sub">
+          (Replace this with your preferred bio. Keep it 4–7 sentences for a strong, confident read.)
+        </p>
+
+        <div class="card">
+          <div class="accent"><span class="dot"></span>Quick background</div>
+          <p>
+            I’m a proud Alvin ISD graduate, a former Alvin ISD educator, and a parent with children currently in the district.
+            I’m committed to supporting students and partnering with families to keep our schools strong, safe, and focused on results.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- MISSION & VISION -->
+    <section id="mission">
+      <div class="wrap">
+        <h2 class="section-title">Mission &amp; Vision</h2>
+        <p class="section-sub">
+          Clear priorities for students, families, teachers, and the community.
+        </p>
+
+        <div class="grid-2">
+          <div class="card">
+            <div class="accent"><span class="dot" style="background: var(--blue); box-shadow: 0 0 0 4px rgba(0,74,173,.12);"></span>Mission</div>
+            <p>
+              Strengthen academic outcomes, support educators, and improve communication so families feel informed, welcomed, and heard.
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="accent"><span class="dot"></span>Vision</div>
+            <p>
+              An Alvin ISD where every student is future ready with strong academics, practical life skills, and meaningful opportunities to grow.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DONATE + VOLUNTEER -->
+    <section id="get-involved">
+      <div class="wrap">
+        <h2 class="section-title">Donate &amp; Volunteer</h2>
+        <p class="section-sub">
+          Local races are won through community support. Your time and contributions help us reach voters across the district.
+        </p>
+
+        <div class="callout">
+          <div class="callout-inner">
+            <div>
+              <h3 style="margin:0 0 8px; font-size:20px;">Join the team</h3>
+              <p style="margin:0; color:var(--muted);">
+                Whether you can volunteer an hour, put up a yard sign, or contribute any amount, it truly makes a difference.
+              </p>
+              <div class="fineprint">
+                Add official disclaimer language here if required for political advertising.
+              </div>
+            </div>
+
+            <div class="cta-row" style="justify-content:flex-start;">
+              <a class="btn btn-primary" href="YOUR_DONATE_LINK_HERE" target="_blank" rel="noopener" style="width:100%;">Donate</a>
+              <a class="btn btn-outline" href="YOUR_VOLUNTEER_LINK_HERE" target="_blank" rel="noopener" style="width:100%;">Volunteer</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="wrap">
+        <div class="footer-strong">Fernando Hinojosa for Alvin ISD Board Trustee • Position 6</div>
+        <div>Political advertising paid for by Fernando Hinojosa Campaign. (Replace with your official disclaimer text.)</div>
+      </div>
+    </footer>
+  </main>
+</body>
 </html>
