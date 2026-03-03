@@ -85,19 +85,105 @@
     .btn-outline{ background: var(--white); color: var(--blue); border-color: var(--blue); }
     .btn-outline:hover{ background:#f3f6ff; }
 
-    /* Full-width banner image under navbar */
-    .banner{
+    /* Hero (full-width, like reference) */
+    .hero{
+      position:relative;
       width:100%;
+      min-height: 520px;
+      display:flex;
+      align-items:stretch;
+      overflow:hidden;
+      border-bottom: 1px solid var(--line);
+      background: #0f1a33;
     }
-    .banner img{
-      width:100%;
-      height: 360px;
-      object-fit: cover;
-      display:block;
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(90deg, rgba(255,255,255,.92) 0%, rgba(255,255,255,.88) 52%, rgba(255,255,255,.30) 76%, rgba(255,255,255,0) 100%),
+        url('header.jpg');
+      background-size: cover;
+      background-position: center;
       filter: none;
     }
-    @media (max-width: 700px){
-      .banner img{ height: 260px; }
+    .hero-inner{
+      position:relative;
+      max-width: 1400px;
+      margin:0 auto;
+      padding: 54px 20px;
+      display:grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap:40px;
+      align-items:center;
+      width:100%;
+      z-index:1;
+    }
+    .hero-copy h1{
+      margin: 0 0 12px;
+      font-size: 56px;
+      line-height:1.03;
+      letter-spacing: -0.02em;
+      color: #10224a;
+    }
+    .hero-copy h1 .em{ color: var(--blue); }
+    .hero-copy .subline{
+      margin: 0 0 18px;
+      color: #2a3343;
+      font-weight:800;
+      font-size: 18px;
+    }
+    .hero-copy .lead{
+      color: #344056;
+      font-size: 16px;
+      max-width: 70ch;
+      margin-bottom: 22px;
+    }
+    .hero-actions{ display:flex; gap:12px; flex-wrap:wrap; align-items:center; }
+    .btn-hero{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding: 12px 18px;
+      border-radius: 16px;
+      font-weight:900;
+      text-decoration:none;
+      border:2px solid transparent;
+      font-size:15px;
+      white-space:nowrap;
+      box-shadow: 0 10px 25px rgba(0,0,0,.10);
+    }
+    .btn-hero-blue{ background: var(--blue); color: var(--white); }
+    .btn-hero-blue:hover{ filter: brightness(.97); }
+    .btn-hero-red{ background: var(--red); color: var(--white); }
+    .btn-hero-red:hover{ filter: brightness(.97); }
+
+    .hero-photo{
+      display:flex;
+      justify-content:flex-end;
+      align-items:flex-end;
+    }
+    .hero-photo img{
+      width:min(520px, 100%);
+      height:auto;
+      border-radius: 26px;
+      box-shadow: 0 18px 50px rgba(0,0,0,.18);
+      object-fit:cover;
+      background: rgba(255,255,255,.6);
+    }
+
+    @media (max-width: 900px){
+      .hero{ min-height: 0; }
+      .hero-inner{ grid-template-columns:1fr; padding: 28px 20px 34px; }
+      .hero-photo{ justify-content:center; }
+      .hero-copy h1{ font-size: 40px; }
+      .hero::before{
+        background:
+          linear-gradient(180deg, rgba(255,255,255,.92) 0%, rgba(255,255,255,.86) 60%, rgba(255,255,255,.70) 100%),
+          url('header.jpg');
+        background-size: cover;
+        background-position: center;
+      }
     }
 
     /* Sections */
@@ -285,6 +371,20 @@
       font-size: 12px;
       margin-top: 10px;
     }
+    .about-full{
+      width:100%;
+      background:#ffffff;
+      padding:80px 0;
+    }
+    .about-container{
+      max-width:1400px;
+      margin:0 auto;
+      padding:0 40px;
+    }
+    .about-content{
+      max-width:1100px;
+    }
+
     footer{
       padding: 22px 0 40px;
       color: var(--muted);
@@ -316,30 +416,27 @@
     </div>
   </header>
 
-  <!-- FULL-WIDTH IMAGE right under nav -->
-  <div class="banner">
-    <!-- Upload an image named header.jpg to the repo root -->
-    <img src="header.jpg" alt="Fernando Hinojosa campaign banner" />
-  </div>
-
-  <main id="top">
-    <!-- HERO TEXT -->
-    <section class="hero-text">
-      <div class="wrap hero-grid">
-        <div>
-          <div class="kicker">Rooted in Alvin ISD. Committed to our future.</div>
-          <h1>Serving the district that shaped me.</h1>
-          <p class="lead">
-            As a proud Alvin ISD graduate, former Alvin ISD educator, and parent of children currently in the district, I understand our schools from every perspective. With a Bachelor’s in Engineering and a Master’s in Education Administration, I bring analytical problem solving and real educational leadership experience to the board. I have led large education programs, responsibly managed million dollar budgets, and expanded STEM and parent engagement initiatives that strengthen success for students, teachers, staff, and families alike. As a volunteer firefighter, I have demonstrated my commitment to service and safety, reflecting how deeply I care about protecting and serving our community. I believe in showing up for students, supporting teachers and staff, and partnering with parents to ensure every Alvin ISD family is supported and every student is future ready with strong academics, practical skills, and meaningful opportunities.
-          </p>
-        </div>
-
-        <div class="hero-image">
-          <!-- Upload a photo named hero.jpg to your repo -->
-          <img src="hero.jpg" alt="Fernando Hinojosa" />
+  <!-- HERO (full-width) -->
+  <section class="hero" id="top">
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <div class="kicker">Rooted in Alvin ISD. Committed to our future.</div>
+        <h1>Engineering better schools<br/><span class="em">for Alvin ISD</span></h1>
+        <div class="subline">Alvin ISD Graduate • Former Educator • Parent</div>
+        <p class="lead">
+         Bringing analytical leadership and real classroom experience to serve students, teachers, and families. 
+        <div class="hero-actions">
+          <a class="btn-hero btn-hero-blue" href="#about">Meet Fernando</a>
+          <a class="btn-hero btn-hero-red" href="YOUR_DONATE_LINK_HERE" target="_blank" rel="noopener">Donate</a>
         </div>
       </div>
-    </section>
+
+      <div class="hero-photo">
+        <!-- Upload a photo named hero.jpg to your repo -->
+        <img src="hero.jpg" alt="Fernando Hinojosa" />
+      </div>
+    </div>
+  </section>
 
     <!-- FULL-WIDTH EXPERIENCE PILLS -->
     <div class="pill-band">
@@ -356,44 +453,56 @@
     </div>
 
     <!-- ABOUT -->
-    <section id="about">
-      <div class="wrap">
-        <div class="kicker">A story rooted in Alvin ISD</div>
+    <section id="about" class="about-full">
+      <div class="about-container">
         <h2 class="section-title">About Me</h2>
 
-        <div style="display:grid; grid-template-columns: 1.2fr .8fr; gap:30px; align-items:start;" class="about-grid">
-          <div>
-            
+        <!-- About Image (top, under heading) -->
+        <div style="margin: 20px 0 30px;">
+          <!-- Upload or replace about.jpg in your repo -->
+          <img src="about.jpg" alt="Fernando Hinojosa" style="width:100%; max-width:600px; border-radius:24px; box-shadow: 0 18px 40px rgba(0,0,0,.15); object-fit:cover;" />
+        </div>
 
-            <div>
-            <p class="section-sub">
-              I am a proud Alvin ISD graduate, and this district helped shape who I am today. My parents immigrated from Mexico in pursuit of a better life, and I grew up in a hardworking, Spanish-speaking household. I attended Alvin ISD schools, participated in bilingual education, and experienced firsthand the power of teachers who believe in their students.
-            </p>
+        <div class="about-content">
 
-            <p class="section-sub">
-              I became the first in my family to graduate from college, earning a degree in Mechanical Engineering from The University of Texas at Tyler. That achievement opened doors to engineering roles, including offshore work with Chevron, and later opportunities in federal policy and legislative service in Washington, D.C. I eventually felt called back to education, returning to serve as a teacher and department leader in Alvin ISD before leading STEM and workforce development initiatives at the nonprofit level.
-            </p>
+          <h3 style="margin-top:30px; font-size:22px;">Rooted in Alvin ISD</h3>
+          <p class="section-sub">
+            I am a proud Alvin ISD graduate, and this district helped shape who I am today. I grew up in a hardworking, Spanish-speaking household after my parents immigrated from Mexico in pursuit of opportunity. I attended Alvin ISD schools, participated in bilingual education, and experienced firsthand the impact educators can have when they believe in their students.
+          </p>
+          <p class="section-sub">
+            I became the first in my family to graduate from college, an achievement that strengthened my belief in the power of education to create lasting opportunity.
+          </p>
 
-            <p class="section-sub">
-              Today, as a husband and father of three raising my family in the same district that invested in me, I remain deeply committed to ensuring every Alvin ISD student has access to strong academics, meaningful opportunities, and a future filled with possibility.
-            </p>
-          </div>
-          </div>
+          <h3 style="margin-top:35px; font-size:22px;">Engineering Perspective. Proven Leadership.</h3>
+          <p class="section-sub">
+            I earned a Bachelor’s degree in Mechanical Engineering from The University of Texas at Tyler and later a Master’s degree in Education Administration. My engineering background taught me to approach complex challenges with analytical thinking, disciplined planning, and a focus on measurable results.
+          </p>
+          <p class="section-sub">
+            I began my career in engineering, including offshore work with Chevron, before serving in federal legislative and policy roles in Washington, D.C., where I worked on research, oversight, and workforce development initiatives. Those experiences gave me a strong foundation in governance, accountability, and responsible decision making.
+          </p>
 
-          <!-- PHOTO PLACEHOLDER -->
-          <div>
-            <!-- Upload a photo named fernando.jpg to your repo -->
-            <img src="fernando.jpg" alt="Fernando Hinojosa" style="width:100%; border-radius:20px; box-shadow: 0 10px 30px rgba(0,0,0,.12); object-fit:cover;" />
-          </div>
+          <h3 style="margin-top:35px; font-size:22px;">Leading in Education</h3>
+          <p class="section-sub">
+            I returned home to serve as an AP Physics teacher in Alvin ISD, where I was honored to be named District Rookie Teacher of the Year. I was later promoted to Science Department Head and Instructional Coach, leading instructional strategy, supporting teachers and staff, and strengthening STEM pathways for students.
+          </p>
+          <p class="section-sub">
+            Beyond the classroom, I have led large-scale STEM and workforce development initiatives at the nonprofit level, managing million-dollar budgets, overseeing cross-functional teams, and partnering with school districts, universities, and industry leaders to connect education to real-world opportunity.
+          </p>
+
+          <h3 style="margin-top:35px; font-size:22px;">Family and Service</h3>
+          <p class="section-sub">
+            Today, I am a husband and father of three, raising my children in the same district that invested in me. My wife is also an engineer, and together we believe deeply in the importance of strong schools and meaningful opportunity.
+          </p>
+          <p class="section-sub">
+            I have also proudly served for four years as an Alvin Volunteer Firefighter. That experience has strengthened my commitment to safety, accountability, and stepping forward when our community needs leadership most. I bring that same dedication to protecting and serving Alvin ISD students, families, teachers, and staff.
+          </p>
+          <p class="section-sub">
+            I believe in showing up for students, supporting teachers and staff, and partnering with parents to ensure every Alvin ISD family is supported and every student is future ready with strong academics, practical skills, and meaningful opportunities.
+          </p>
+
         </div>
       </div>
     </section>
-
-    <style>
-      @media (max-width: 900px){
-        .about-grid{ grid-template-columns: 1fr !important; }
-      }
-    </style>
 
     <!-- MISSION & VISION -->
     <section id="mission">
