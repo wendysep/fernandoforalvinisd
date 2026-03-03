@@ -114,7 +114,30 @@
 
     /* Hero text block (now below banner) */
     .hero-text{
-      padding: 44px 0 10px;
+      padding: 60px 0 20px;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:40px;
+      align-items:center;
+    }
+
+    .hero-image img{
+      width:100%;
+      border-radius:24px;
+      box-shadow: 0 15px 40px rgba(0,0,0,.12);
+      object-fit:cover;
+    }
+
+    @media (max-width: 900px){
+      .hero-grid{
+        grid-template-columns:1fr;
+      }
+      .hero-image{
+        order:-1;
+      }
     }
     .kicker{
       display:inline-block;
@@ -142,6 +165,22 @@
       flex-wrap:wrap;
       margin: 14px 0 18px;
     }
+
+    /* Full-width pill band */
+    .pill-band{
+      width:100%;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(90deg, rgba(0,74,173,.05), rgba(255,255,255,1), rgba(211,61,56,.05));
+      padding: 18px 0;
+    }
+    .pill-row-wide{
+      max-width: 1400px;
+      margin:0 auto;
+      padding: 0 20px;
+      justify-content:center;
+    }
+
     .pill{
       border:1px solid var(--line);
       background:#fafbff;
@@ -286,30 +325,40 @@
   <main id="top">
     <!-- HERO TEXT -->
     <section class="hero-text">
-      <div class="wrap">
-        <div class="kicker">Rooted in Alvin ISD. Committed to our future.</div>
-        <h1>Serving the district that shaped me.</h1>
-        <p class="lead">
-          As a proud Alvin ISD graduate, former Alvin ISD educator, and parent of children currently in the district, I understand our schools from every perspective. With a Bachelor’s in Engineering and a Master’s in Education Administration, I bring analytical problem solving and real educational leadership experience to the board. I have led large education programs, responsibly managed million dollar budgets, and expanded STEM and parent engagement initiatives that strengthen success for students, teachers, staff, and families alike. As a volunteer firefighter, I have demonstrated my commitment to service and safety, reflecting how deeply I care about protecting and serving our community. I believe in showing up for students, supporting teachers and staff, and partnering with parents to ensure every Alvin ISD family is supported and every student is future ready with strong academics, practical skills, and meaningful opportunities.
-        </p>
-
-        <div class="pill-row">
-          <div class="pill">Alvin ISD graduate</div>
-          <div class="pill">Former Alvin ISD educator</div>
-          <div class="pill">Parent in the district</div>
-          <div class="pill">BS in Engineering</div>
-          <div class="pill">M.Ed. in Education Administration</div>
-          <div class="pill">STEM and workforce readiness advocate</div>
-          <div class="pill">Federal policy and legislative experience</div>
-          <div class="pill">Volunteer Firefighter</div>
+      <div class="wrap hero-grid">
+        <div>
+          <div class="kicker">Rooted in Alvin ISD. Committed to our future.</div>
+          <h1>Serving the district that shaped me.</h1>
+          <p class="lead">
+            As a proud Alvin ISD graduate, former Alvin ISD educator, and parent of children currently in the district, I understand our schools from every perspective. With a Bachelor’s in Engineering and a Master’s in Education Administration, I bring analytical problem solving and real educational leadership experience to the board. I have led large education programs, responsibly managed million dollar budgets, and expanded STEM and parent engagement initiatives that strengthen success for students, teachers, staff, and families alike. As a volunteer firefighter, I have demonstrated my commitment to service and safety, reflecting how deeply I care about protecting and serving our community. I believe in showing up for students, supporting teachers and staff, and partnering with parents to ensure every Alvin ISD family is supported and every student is future ready with strong academics, practical skills, and meaningful opportunities.
+          </p>
         </div>
+
+        <div class="hero-image">
+          <!-- Upload a photo named hero.jpg to your repo -->
+          <img src="hero.jpg" alt="Fernando Hinojosa" />
         </div>
       </div>
     </section>
 
+    <!-- FULL-WIDTH EXPERIENCE PILLS -->
+    <div class="pill-band">
+      <div class="pill-row pill-row-wide">
+        <div class="pill">Alvin ISD graduate</div>
+        <div class="pill">Former Alvin ISD educator</div>
+        <div class="pill">Parent in the district</div>
+        <div class="pill">BS in Engineering</div>
+        <div class="pill">M.Ed. in Education Administration</div>
+        <div class="pill">STEM and workforce readiness advocate</div>
+        <div class="pill">Federal policy and legislative experience</div>
+        <div class="pill">Volunteer Firefighter</div>
+      </div>
+    </div>
+
     <!-- ABOUT -->
     <section id="about">
       <div class="wrap">
+        <div class="kicker">A story rooted in Alvin ISD</div>
         <h2 class="section-title">About Me</h2>
 
         <div style="display:grid; grid-template-columns: 1.2fr .8fr; gap:30px; align-items:start;" class="about-grid">
@@ -349,6 +398,7 @@
     <!-- MISSION & VISION -->
     <section id="mission">
       <div class="wrap">
+        <div class="kicker">Clear priorities for strong schools</div>
         <h2 class="section-title">Mission &amp; Vision</h2>
         <p class="section-sub">
           Clear priorities for students, families, teachers, and the community.
