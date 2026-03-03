@@ -188,6 +188,39 @@
       box-shadow: 0 0 0 4px rgba(211,61,56,.12);
     }
 
+    /* Experience custom bullets */
+    .exp-list{
+      list-style:none;
+      margin:14px 0 0;
+      padding:0;
+      display:grid;
+      gap:10px;
+    }
+    .exp-list li{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-weight:800;
+      color:var(--ink);
+    }
+    .exp-list li::before{
+      content:"";
+      width:10px;
+      height:10px;
+      border-radius:50%;
+      display:inline-block;
+    }
+    .exp-list li::before{
+      content:"";
+      width:10px;
+      height:10px;
+      border-radius:50%;
+      display:inline-block;
+      background: var(--blue);
+      box-shadow: 0 0 0 4px rgba(0,74,173,.12);
+    }
+    
+
     /* Donate/Volunteer section */
     .callout{
       border-radius: calc(var(--radius) + 4px);
@@ -254,17 +287,22 @@
     <!-- HERO TEXT -->
     <section class="hero-text">
       <div class="wrap">
-        <div class="kicker">Strong schools. Strong community.</div>
-        <h1>Putting students and families first.</h1>
+        <div class="kicker">Rooted in Alvin ISD. Committed to our future.</div>
+        <h1>Serving the district that shaped me.</h1>
         <p class="lead">
-          I’m running to support strong academics, practical skills, and meaningful parent engagement —
-          so every Alvin ISD student is future ready.
+          As a proud Alvin ISD graduate, former Alvin ISD educator, and parent of children currently in the district, I understand our schools from every perspective. With a Bachelor’s in Engineering and a Master’s in Education Administration, I bring analytical problem solving and real educational leadership experience to the board. I have led large education programs, responsibly managed million dollar budgets, and expanded STEM and parent engagement initiatives that strengthen success for students, teachers, staff, and families alike. As a volunteer firefighter, I have demonstrated my commitment to service and safety, reflecting how deeply I care about protecting and serving our community. I believe in showing up for students, supporting teachers and staff, and partnering with parents to ensure every Alvin ISD family is supported and every student is future ready with strong academics, practical skills, and meaningful opportunities.
         </p>
 
         <div class="pill-row">
           <div class="pill">Alvin ISD graduate</div>
-          <div class="pill">Former educator</div>
+          <div class="pill">Former Alvin ISD educator</div>
           <div class="pill">Parent in the district</div>
+          <div class="pill">BS in Engineering</div>
+          <div class="pill">M.Ed. in Education Administration</div>
+          <div class="pill">STEM and workforce readiness advocate</div>
+          <div class="pill">Federal policy and legislative experience</div>
+          <div class="pill">Volunteer Firefighter</div>
+        </div>
         </div>
       </div>
     </section>
@@ -273,19 +311,40 @@
     <section id="about">
       <div class="wrap">
         <h2 class="section-title">About Me</h2>
-        <p class="section-sub">
-          Replace this with your preferred bio (4–7 sentences works great).
-        </p>
 
-        <div class="card">
-          <div class="accent"><span class="dot"></span>Quick background</div>
-          <p>
-            I’m a proud Alvin ISD graduate, a former Alvin ISD educator, and a parent with children currently in the district.
-            I’m committed to supporting students and partnering with families to keep our schools strong, safe, and focused on results.
-          </p>
+        <div style="display:grid; grid-template-columns: 1.2fr .8fr; gap:30px; align-items:start;" class="about-grid">
+          <div>
+            
+
+            <div>
+            <p class="section-sub">
+              I am a proud Alvin ISD graduate, and this district helped shape who I am today. My parents immigrated from Mexico in pursuit of a better life, and I grew up in a hardworking, Spanish-speaking household. I attended Alvin ISD schools, participated in bilingual education, and experienced firsthand the power of teachers who believe in their students.
+            </p>
+
+            <p class="section-sub">
+              I became the first in my family to graduate from college, earning a degree in Mechanical Engineering from The University of Texas at Tyler. That achievement opened doors to engineering roles, including offshore work with Chevron, and later opportunities in federal policy and legislative service in Washington, D.C. I eventually felt called back to education, returning to serve as a teacher and department leader in Alvin ISD before leading STEM and workforce development initiatives at the nonprofit level.
+            </p>
+
+            <p class="section-sub">
+              Today, as a husband and father of three raising my family in the same district that invested in me, I remain deeply committed to ensuring every Alvin ISD student has access to strong academics, meaningful opportunities, and a future filled with possibility.
+            </p>
+          </div>
+          </div>
+
+          <!-- PHOTO PLACEHOLDER -->
+          <div>
+            <!-- Upload a photo named fernando.jpg to your repo -->
+            <img src="fernando.jpg" alt="Fernando Hinojosa" style="width:100%; border-radius:20px; box-shadow: 0 10px 30px rgba(0,0,0,.12); object-fit:cover;" />
+          </div>
         </div>
       </div>
     </section>
+
+    <style>
+      @media (max-width: 900px){
+        .about-grid{ grid-template-columns: 1fr !important; }
+      }
+    </style>
 
     <!-- MISSION & VISION -->
     <section id="mission">
