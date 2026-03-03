@@ -39,32 +39,81 @@
       position: sticky;
       top:0;
       z-index:100;
-      background: rgba(255,255,255,.92);
+      background: rgba(255,255,255,.96);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--line);
     }
     .header-inner{
-      display:flex;
+      display:grid;
+      grid-template-columns: 1fr auto 1fr;
       align-items:center;
-      justify-content:flex-end; /* keep it clean */
-      gap:14px;
-      padding: 14px 0;
+      padding:14px 0;
     }
     nav{
       display:flex;
+      justify-content:center;
+      gap:24px;
       align-items:center;
-      gap:10px;
-      flex-wrap:wrap;
     }
     nav a{
       text-decoration:none;
-      font-weight:700;
+      font-weight:800;
       color:var(--muted);
       font-size:14px;
-      padding:8px 10px;
+      padding:8px 4px;
       border-radius:12px;
     }
-    nav a:hover{ background:#f3f5fb; color:var(--ink); }
+    nav a:hover{ color:var(--blue); }
+
+    .nav-right{
+      display:flex;
+      justify-content:flex-end;
+      align-items:center;
+      gap:14px;
+    }
+
+    .nav-social{
+      display:flex;
+      gap:10px;
+      align-items:center;
+    }
+    .nav-social a{
+      display:inline-flex;
+      width:34px;
+      height:34px;
+      border-radius:999px;
+      align-items:center;
+      justify-content:center;
+      border:1px solid var(--line);
+      background:#fff;
+      transition:.15s ease;
+    }
+    .nav-social a:hover{
+      border-color:rgba(0,74,173,.3);
+      transform:translateY(-1px);
+    }
+    .nav-social svg{
+      width:16px;
+      height:16px;
+    }
+    .nav-social .fb svg{ fill:var(--blue); }
+    .nav-social .ig svg{ stroke:var(--red); }
+
+    @media (max-width: 900px){
+      .header-inner{
+        grid-template-columns:1fr;
+        gap:12px;
+        text-align:center;
+      }
+      nav{
+        justify-content:center;
+        flex-wrap:wrap;
+      }
+      .nav-right{
+        justify-content:center;
+        flex-wrap:wrap;
+      }
+    }
 
     .cta-row{ display:flex; gap:10px; align-items:center; }
     .btn{
@@ -100,12 +149,19 @@
       content:"";
       position:absolute;
       inset:0;
+      /* Gradient is layered ON TOP of the image */
       background:
-        linear-gradient(90deg, rgba(255,255,255,.92) 0%, rgba(255,255,255,.88) 52%, rgba(255,255,255,.30) 76%, rgba(255,255,255,0) 100%),
+        linear-gradient(90deg,
+          rgba(255,255,255,.94) 0%,
+          rgba(255,255,255,.90) 50%,
+          rgba(255,255,255,.40) 75%,
+          rgba(255,255,255,0) 100%
+        ),
         url('header.jpg');
       background-size: cover;
       background-position: center;
-      filter: none;
+      background-repeat:no-repeat;
+      z-index:0;
     }
     .hero-inner{
       position:relative;
@@ -385,6 +441,63 @@
       max-width:1100px;
     }
 
+    /* Social Follow Section */
+    .social-section{
+      padding:60px 0;
+      background: linear-gradient(135deg, rgba(0,74,173,.08), rgba(255,255,255,1) 60%, rgba(211,61,56,.08));
+      text-align:center;
+      border-top:1px solid var(--line);
+    }
+    .social-section h2{ margin-bottom:12px; }
+    .social-links{
+      display:flex;
+      justify-content:center;
+      gap:16px;
+      margin-top:18px;
+      flex-wrap:wrap;
+    }
+    .social-icon{
+      width:54px;
+      height:54px;
+      border-radius:999px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      border:2px solid var(--line);
+      background:#ffffff;
+      box-shadow: 0 10px 25px rgba(0,0,0,.08);
+      transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+      text-decoration:none;
+    }
+    .social-icon:hover{
+      transform: translateY(-1px);
+      box-shadow: 0 14px 30px rgba(0,0,0,.10);
+      border-color: rgba(0,74,173,.28);
+    }
+    .social-icon svg{ width:22px; height:22px; display:block; }
+    .social-icon.fb svg{ fill: var(--blue); }
+    .social-icon.ig svg{ stroke: var(--red); }
+    .social-label{
+      margin-top:10px;
+      display:flex;
+      justify-content:center;
+      gap:22px;
+      color: var(--muted);
+      font-weight:800;
+      font-size:13px;
+    }
+    .sr-only{
+      position:absolute;
+      width:1px;
+      height:1px;
+      padding:0;
+      margin:-1px;
+      overflow:hidden;
+      clip:rect(0,0,0,0);
+      white-space:nowrap;
+      border:0;
+    }
+
     footer{
       padding: 22px 0 40px;
       color: var(--muted);
@@ -401,16 +514,33 @@
   <header>
     <div class="wrap">
       <div class="header-inner">
+        
+        <div></div>
+
         <nav>
           <a href="#about">About</a>
           <a href="#mission">Mission &amp; Vision</a>
           <a href="#get-involved">Donate &amp; Volunteer</a>
         </nav>
 
-        <div class="cta-row">
-          <!-- Replace these href links with your real URLs -->
-          <a class="btn btn-primary" href="YOUR_DONATE_LINK_HERE" target="_blank" rel="noopener">Donate</a>
-          <a class="btn btn-outline" href="YOUR_VOLUNTEER_LINK_HERE" target="_blank" rel="noopener">Volunteer</a>
+        <div class="nav-right">
+          <div class="nav-social">
+            <a href="YOUR_FACEBOOK_LINK" target="_blank" rel="noopener" class="fb" aria-label="Facebook">
+              <svg viewBox="0 0 24 24"><path d="M14.5 8.5V7c0-.7.4-1 1.2-1H17V3h-2c-2.8 0-4.5 1.7-4.5 4.6v1.9H8v3h2.5V21h3.2v-8.5H16l.5-3h-2.8z"/></svg>
+            </a>
+            <a href="YOUR_INSTAGRAM_LINK" target="_blank" rel="noopener" class="ig" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="6" y="6" width="12" height="12" rx="3" ry="3"></rect>
+                <circle cx="12" cy="12" r="3"></circle>
+                <circle cx="16.5" cy="7.5" r="0.8"></circle>
+              </svg>
+            </a>
+          </div>
+
+          <div class="cta-row">
+            <a class="btn btn-primary" href="YOUR_DONATE_LINK_HERE" target="_blank" rel="noopener">Donate</a>
+            <a class="btn btn-outline" href="YOUR_VOLUNTEER_LINK_HERE" target="_blank" rel="noopener">Volunteer</a>
+          </div>
         </div>
       </div>
     </div>
@@ -529,9 +659,7 @@
       <div class="wrap">
         <div class="kicker">Clear priorities for strong schools</div>
         <h2 class="section-title">Mission &amp; Vision</h2>
-        <p class="section-sub">
-          Clear priorities for students, families, teachers, and the community.
-        </p>
+        
 
         <div class="grid-2">
           <div class="card">
@@ -540,14 +668,14 @@
               Mission
             </div>
             <p>
-              Strengthen academic outcomes, support educators, and improve communication so families feel informed, welcomed, and heard.
+              To serve Alvin ISD students and families by strengthening academics, supporting teachers and staff, and making transparent, responsible decisions that keep our schools safe and focused on student success.
             </p>
           </div>
 
           <div class="card">
             <div class="accent"><span class="dot"></span>Vision</div>
             <p>
-              An Alvin ISD where every student is future ready with strong academics, practical life skills, and meaningful opportunities to grow.
+              An Alvin ISD where every student graduates prepared for college, a career, or service; where families have confidence in district leadership; and where growth never comes at the expense of quality, safety, or fiscal responsibility.
             </p>
           </div>
         </div>
@@ -579,6 +707,43 @@
               <a class="btn btn-outline" href="YOUR_VOLUNTEER_LINK_HERE" target="_blank" rel="noopener" style="width:100%;">Volunteer</a>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOLLOW SECTION -->
+    <section class="social-section">
+      <div class="wrap">
+        <div class="kicker">Stay Connected</div>
+        <h2 class="section-title">Follow Fernando on Social Media</h2>
+        <p class="section-sub" style="margin:0 auto;">
+          Get updates, event information, and campaign news by following on Facebook and Instagram.
+        </p>
+
+        <div class="social-links">
+          <!-- Replace with your real links -->
+          <a href="YOUR_FACEBOOK_LINK" target="_blank" rel="noopener" class="social-icon fb" aria-label="Follow Fernando on Facebook">
+            <span class="sr-only">Facebook</span>
+            <!-- Facebook SVG (official mark simplified) -->
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M14.5 8.5V7c0-.7.4-1 1.2-1H17V3h-2c-2.8 0-4.5 1.7-4.5 4.6v1.9H8v3h2.5V21h3.2v-8.5H16l.5-3h-2.8z"/>
+            </svg>
+          </a>
+
+          <a href="YOUR_INSTAGRAM_LINK" target="_blank" rel="noopener" class="social-icon ig" aria-label="Follow Fernando on Instagram">
+            <span class="sr-only">Instagram</span>
+            <!-- Instagram SVG (outline) -->
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="6" y="6" width="12" height="12" rx="3" ry="3"></rect>
+              <circle cx="12" cy="12" r="3"></circle>
+              <circle cx="16.5" cy="7.5" r="0.8"></circle>
+            </svg>
+          </a>
+        </div>
+
+        <div class="social-label" aria-hidden="true">
+          <div>Facebook</div>
+          <div>Instagram</div>
         </div>
       </div>
     </section>
