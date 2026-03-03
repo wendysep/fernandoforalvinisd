@@ -99,20 +99,68 @@
     .nav-social .fb svg{ fill:var(--blue); }
     .nav-social .ig svg{ stroke:var(--red); }
 
+    /* Hamburger + mobile menu */
+    .hamburger{
+      display:none;
+      width:42px;
+      height:42px;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background:#fff;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      transition:.15s ease;
+    }
+    .hamburger:hover{ border-color: rgba(0,74,173,.28); transform: translateY(-1px); }
+    .hamburger svg{ width:20px; height:20px; stroke: var(--ink); }
+
+    .mobile-menu{
+      display:none;
+      border-top:1px solid var(--line);
+      background: rgba(255,255,255,.98);
+      backdrop-filter: blur(10px);
+    }
+    .mobile-menu-inner{
+      padding: 14px 0 18px;
+      display:grid;
+      gap:12px;
+    }
+    .mobile-links{
+      display:grid;
+      gap:8px;
+    }
+    .mobile-links a{
+      text-decoration:none;
+      font-weight:900;
+      color: var(--ink);
+      padding: 12px 12px;
+      border-radius: 14px;
+      background:#f6f8ff;
+      border:1px solid var(--line);
+    }
+    .mobile-links a:hover{ border-color: rgba(0,74,173,.28); }
+
+    .mobile-actions{ display:grid; gap:10px; }
+    .mobile-actions .btn{ width:100%; justify-content:center; }
+    .mobile-social{ display:flex; gap:10px; justify-content:flex-start; }
+
+    body.menu-open .mobile-menu{ display:block; }
+
+    @media (max-width: 900px){
+      .hamburger{ display:inline-flex; }
+      .nav-social{ display:none; } /* keep header clean on mobile */
+      .cta-row .btn{ padding: 10px 12px; font-size: 14px; }
+    }
+
     @media (max-width: 900px){
       .header-inner{
-        grid-template-columns:1fr;
-        gap:12px;
-        text-align:center;
+        grid-template-columns: auto 1fr auto;
+        gap:10px;
+        text-align:left;
       }
-      nav{
-        justify-content:center;
-        flex-wrap:wrap;
-      }
-      .nav-right{
-        justify-content:center;
-        flex-wrap:wrap;
-      }
+      nav{ display:none; }
+      .nav-right{ justify-content:flex-end; }
     }
 
     .cta-row{ display:flex; gap:10px; align-items:center; }
@@ -355,6 +403,44 @@
       margin:0;
       color: var(--muted);
     }
+
+    /* About Section Redesign */
+    .about-full{
+      width:100%;
+      padding:90px 0;
+      background:#f4f8ff; /* soft blue background */
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+    }
+    .about-container{
+      max-width:1200px;
+      margin:0 auto;
+      padding:0 30px;
+    }
+    .about-paragraph{
+      font-size:17px;
+      line-height:1.75;
+      color:#2a3343;
+      margin-top:30px;
+    }
+    .about-image{
+      float:right;
+      width:420px;
+      max-width:45%;
+      margin:10px 0 20px 30px;
+      border-radius:24px;
+      box-shadow:0 18px 50px rgba(0,0,0,.15);
+      border:4px solid rgba(0,74,173,.25); /* subtle blue accent */
+    }
+    @media (max-width:900px){
+      .about-image{
+        float:none;
+        display:block;
+        margin:20px auto;
+        max-width:100%;
+        width:100%;
+      }
+    }
     .accent{
       display:inline-flex;
       align-items:center;
@@ -418,29 +504,14 @@
       align-items:center;
     }
     @media (max-width: 900px){
-      nav{ display:none; } /* cleaner on mobile */
       .callout-inner{ grid-template-columns:1fr; }
-      .header-inner{ justify-content:flex-end; }
     }
     .fineprint{
       color: var(--muted);
       font-size: 12px;
       margin-top: 10px;
     }
-    .about-full{
-      width:100%;
-      background:#ffffff;
-      padding:80px 0;
-    }
-    .about-container{
-      max-width:1400px;
-      margin:0 auto;
-      padding:0 40px;
-    }
-    .about-content{
-      max-width:1100px;
-    }
-
+    
     /* Social Follow Section */
     .social-section{
       padding:60px 0;
@@ -515,7 +586,13 @@
     <div class="wrap">
       <div class="header-inner">
         
-        <div></div>
+        <button class="hamburger" id="menuBtn" aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M4 7h16" />
+            <path d="M4 12h16" />
+            <path d="M4 17h16" />
+          </svg>
+        </button>
 
         <nav>
           <a href="#about">About</a>
@@ -544,6 +621,38 @@
         </div>
       </div>
     </div>
+  
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="wrap">
+      <div class="mobile-menu-inner">
+        <div class="mobile-links">
+          <a href="#about">About</a>
+          <a href="#mission">Mission &amp; Vision</a>
+          <a href="#get-involved">Donate &amp; Volunteer</a>
+        </div>
+
+        <div class="mobile-actions">
+          <a class="btn btn-primary" href="https://secure.anedot.com/fernando-for-alvinisd/14ee73ca-8b72-4eb6-8afe-be679cb1826c" target="_blank" rel="noopener">Donate</a>
+          <a class="btn btn-outline" href="YOUR_VOLUNTEER_LINK_HERE" target="_blank" rel="noopener">Volunteer</a>
+        </div>
+
+        <div class="mobile-social">
+          <a href="https://www.facebook.com/HinojosaForAlvinISD" target="_blank" rel="noopener" class="social-icon fb" aria-label="Facebook">
+            <span class="sr-only">Facebook</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 8.5V7c0-.7.4-1 1.2-1H17V3h-2c-2.8 0-4.5 1.7-4.5 4.6v1.9H8v3h2.5V21h3.2v-8.5H16l.5-3h-2.8z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/hinojosaforalvinisd/" target="_blank" rel="noopener" class="social-icon ig" aria-label="Instagram">
+            <span class="sr-only">Instagram</span>
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="6" y="6" width="12" height="12" rx="3" ry="3"></rect>
+              <circle cx="12" cy="12" r="3"></circle>
+              <circle cx="16.5" cy="7.5" r="0.8"></circle>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
   </header>
 
   <!-- HERO (full-width) -->
@@ -590,66 +699,30 @@
         
         <h2 class="section-title">About Me</h2>
 
-        <!-- About Section Image -->
-        <div style="margin: 25px 0 30px; text-align:center;">
-          <!-- Upload about.jpg to your repo -->
-          <img src="about.jpg" alt="Fernando Hinojosa" style="width:100%; max-width:700px; border-radius:24px; box-shadow:0 18px 50px rgba(0,0,0,.15); object-fit:cover;" />
-        </div>
+        
 
-        <div class="grid-2" style="margin-top:30px;">
+        <div class="about-paragraph">
+          <img src="about.jpg" alt="Fernando Hinojosa" class="about-image" />
 
-          <div class="card">
-            <div class="accent">
-              <span class="dot" style="background: var(--blue); box-shadow: 0 0 0 4px rgba(0,74,173,.12);"></span>
-              Rooted in Alvin ISD
-            </div>
-            <p>
-              I am a proud Alvin ISD graduate, and this district helped shape who I am today. I grew up in a hardworking, Spanish-speaking household after my parents immigrated from Mexico in pursuit of opportunity. I attended Alvin ISD schools, participated in bilingual education, and experienced firsthand the impact educators can have when they believe in their students.
-            </p>
-            <p style="margin-top:12px;">
-              I became the first in my family to graduate from college, an achievement that strengthened my belief in the power of education to create lasting opportunity.
-            </p>
-          </div>
+          <h3 style="margin-top:0; font-size:20px;">Rooted in Alvin ISD</h3>
+          <p>
+            I am a proud Alvin ISD graduate, and this district helped shape who I am today. I grew up in a hardworking, Spanish-speaking household after my parents immigrated from Mexico in pursuit of opportunity. I attended Alvin ISD schools, participated in bilingual education, and experienced firsthand the impact educators can have when they believe in their students. I became the first in my family to graduate from college, strengthening my belief in the power of education to create lasting opportunity.
+          </p>
 
-          <div class="card">
-            <div class="accent">
-              <span class="dot"></span>
-              Engineering Perspective. Proven Leadership.
-            </div>
-            <p>
-              I earned a Bachelor’s degree in Mechanical Engineering from The University of Texas at Tyler and later a Master’s degree in Education Administration. My engineering background taught me to approach complex challenges with analytical thinking, disciplined planning, and a focus on measurable results.
-            </p>
-            <p style="margin-top:12px;">
-              I began my career in engineering, including offshore work with Chevron, before serving in federal legislative and policy roles in Washington, D.C., where I worked on research, oversight, and workforce development initiatives.
-            </p>
-          </div>
+          <h3 style="margin-top:28px; font-size:20px;">Engineering Perspective & Proven Leadership</h3>
+          <p>
+            I earned a Bachelor’s degree in Mechanical Engineering from The University of Texas at Tyler and later a Master’s degree in Education Administration. I began my career in engineering, including offshore work with Chevron, before serving in federal legislative and policy roles in Washington, D.C.
+          </p>
 
-          <div class="card">
-            <div class="accent">
-              <span class="dot" style="background: var(--blue); box-shadow: 0 0 0 4px rgba(0,74,173,.12);"></span>
-              Leading in Education
-            </div>
-            <p>
-              I returned home to serve as an AP Physics teacher in Alvin ISD, where I was honored to be named District Rookie Teacher of the Year. I was later promoted to Science Department Head and Instructional Coach, leading instructional strategy, supporting teachers and staff, and strengthening STEM pathways for students.
-            </p>
-            <p style="margin-top:12px;">
-              Beyond the classroom, I have led large-scale STEM and workforce development initiatives at the nonprofit level, managing million-dollar budgets and partnering with school districts, universities, and industry leaders.
-            </p>
-          </div>
+          <h3 style="margin-top:28px; font-size:20px;">Leading in Education</h3>
+          <p>
+            I returned home to serve as an AP Physics teacher in Alvin ISD, where I was honored as District Rookie Teacher of the Year and later served as Science Department Head and Instructional Coach. Beyond the classroom, I have led large-scale STEM and workforce development initiatives, managing million-dollar budgets and partnering with districts, universities, and industry leaders.
+          </p>
 
-          <div class="card">
-            <div class="accent">
-              <span class="dot"></span>
-              Family and Service
-            </div>
-            <p>
-              Today, I am a husband and father of three raising my children in the same district that invested in me. My wife is also an engineer, and together we believe deeply in the importance of strong schools and meaningful opportunity.
-            </p>
-            <p style="margin-top:12px;">
-              I have proudly served for four years as an Alvin Volunteer Firefighter, strengthening my commitment to safety, accountability, and stepping forward when our community needs leadership most.
-            </p>
-          </div>
-
+          <h3 style="margin-top:28px; font-size:20px;">Family & Service</h3>
+          <p>
+            Today, as a husband and father of three raising my children in the same district that invested in me, and as a four-year Alvin Volunteer Firefighter, I remain deeply committed to strengthening academics, supporting teachers and staff, and ensuring every Alvin ISD student is prepared for a future filled with opportunity.
+          </p>
         </div>
       </div>
     </section>
@@ -754,5 +827,42 @@
       </div>
     </footer>
   </main>
+
+
+  <script>
+    (function(){
+      const btn = document.getElementById('menuBtn');
+      const menu = document.getElementById('mobileMenu');
+      if(!btn || !menu) return;
+
+      function closeMenu(){
+        document.body.classList.remove('menu-open');
+        btn.setAttribute('aria-expanded','false');
+        btn.setAttribute('aria-label','Open menu');
+      }
+
+      btn.addEventListener('click', () => {
+        const open = document.body.classList.toggle('menu-open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      });
+
+      // Close menu when clicking a link
+      menu.addEventListener('click', (e) => {
+        const a = e.target.closest('a');
+        if(a && a.getAttribute('href') && a.getAttribute('href').startsWith('#')) closeMenu();
+      });
+
+      // Close on Escape
+      document.addEventListener('keydown', (e) => {
+        if(e.key === 'Escape') closeMenu();
+      });
+
+      // Close menu on resize back to desktop
+      window.addEventListener('resize', () => {
+        if(window.innerWidth > 900) closeMenu();
+      });
+    })();
+  </script>
 </body>
 </html>
