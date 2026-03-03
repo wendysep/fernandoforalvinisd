@@ -556,6 +556,19 @@
     .social-icon.fb svg{ fill: #ffffff; }
     .social-icon.ig svg{ stroke: #ffffff; }
 
+    /* Mobile menu social icons should be visible on light background */
+    .mobile-menu .social-icon{
+      width:46px;
+      height:46px;
+      background:#ffffff;
+      border:1px solid var(--line);
+      box-shadow: 0 10px 25px rgba(0,0,0,.08);
+      backdrop-filter: none;
+    }
+    .mobile-menu .social-icon svg{ width:20px; height:20px; }
+    .mobile-menu .social-icon.fb svg{ fill: var(--blue); }
+    .mobile-menu .social-icon.ig svg{ stroke: var(--red); }
+
     .social-label{
       margin-top:14px;
       display:flex;
