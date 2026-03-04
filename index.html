@@ -184,95 +184,67 @@
     .btn-outline{ background: var(--white); color: var(--blue); border-color: var(--blue); }
     .btn-outline:hover{ background:#f3f6ff; }
 
-    /* Hero (full-width, like reference) */
+    /* Hero (reference-style banner image + CTAs) */
     .hero{
-  background: linear-gradient(135deg, rgba(0,74,173,.10), rgba(255,255,255,1) 50%, rgba(211,61,56,.10));
-  padding: 60px 0;
-}
-    .hero::before{
+      position:relative;
+      padding: 0;
+      border-bottom: 1px solid var(--line);
+      background:#fff;
+    }
+    .hero-banner{
+      width:100%;
+      position:relative;
+      overflow:hidden;
+    }
+    .hero-banner img{
+      width:100%;
+      height:auto;
+      display:block;
+    }
+    /* Subtle overlay to keep buttons readable if needed */
+    .hero-banner::after{
       content:"";
       position:absolute;
       inset:0;
-      /* Same gradient as callout */
-      background: linear-gradient(135deg, rgba(0,74,173,.10), rgba(255,255,255,1) 50%, rgba(211,61,56,.10));
-      z-index:0;
+      background: linear-gradient(90deg, rgba(255,255,255,.10), rgba(255,255,255,0));
+      pointer-events:none;
     }
-    .hero-inner{
-      position:relative;
-      max-width: 1400px;
-      margin:0 auto;
-      padding: 54px 20px;
-      display:grid;
-      grid-template-columns: 1.05fr .95fr;
-      gap:40px;
-      align-items:center;
-      width:100%;
-      z-index:1;
+
+    .hero-cta-overlay{
+      position:absolute;
+      bottom:30px;
+      left:30px;
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      z-index:2;
     }
-    .hero-copy h1{
-      margin: 0 0 12px;
-      font-size: 56px;
-      line-height:1.03;
-      letter-spacing: -0.02em;
-      color: #10224a;
-    }
-    .hero-copy h1 .em{ color: var(--blue); }
-    .hero-copy .subline{
-      margin: 0 0 18px;
-      color: #2a3343;
-      font-weight:800;
-      font-size: 18px;
-    }
-    .hero-copy .lead{
-      color: #344056;
-      font-size: 16px;
-      max-width: 70ch;
-      margin-bottom: 22px;
-    }
-    .hero-actions{ display:flex; gap:12px; flex-wrap:wrap; align-items:center; }
+
     .btn-hero{
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      padding: 12px 18px;
-      border-radius: 16px;
+      padding:12px 18px;
+      border-radius:16px;
       font-weight:900;
       text-decoration:none;
-      border:2px solid transparent;
       font-size:15px;
-      white-space:nowrap;
-      box-shadow: 0 10px 25px rgba(0,0,0,.10);
+      box-shadow:0 12px 30px rgba(0,0,0,.25);
+      border:2px solid transparent;
     }
+
     .btn-hero-blue{ background: var(--blue); color: var(--white); }
-    .btn-hero-blue:hover{ filter: brightness(.97); }
+    .btn-hero-blue:hover{ filter:brightness(.95); }
+
     .btn-hero-red{ background: var(--red); color: var(--white); }
-    .btn-hero-red:hover{ filter: brightness(.97); }
+    .btn-hero-red:hover{ filter:brightness(.95); }
 
-    .hero-photo{
-      display:flex;
-      justify-content:flex-end;
-      align-items:flex-end;
-    }
-    .hero-photo img{
-      width:min(520px, 100%);
-      height:auto;
-      border-radius: 26px;
-      box-shadow: 0 18px 50px rgba(0,0,0,.18);
-      object-fit:cover;
-      background: rgba(255,255,255,.6);
-    }
-
-    @media (max-width: 900px){
-      .hero{ min-height: 0; }
-      .hero-inner{ grid-template-columns:1fr; padding: 28px 20px 34px; }
-      .hero-photo{ justify-content:center; }
-      .hero-copy h1{ font-size: 40px; }
-      .hero::before{
-        background:
-          linear-gradient(180deg, rgba(255,255,255,.92) 0%, rgba(255,255,255,.86) 60%, rgba(255,255,255,.70) 100%),
-          url('header.jpg');
-        background-size: cover;
-        background-position: center;
+    @media (max-width:900px){
+      .hero-cta-overlay{
+        left:50%;
+        transform:translateX(-50%);
+        bottom:18px;
+        justify-content:center;
       }
     }
 
@@ -663,25 +635,16 @@
   </div>
   </header>
 
-  <!-- HERO (full-width) -->
+  <!-- HERO (reference-style banner) -->
   <section class="hero" id="top">
-    <div class="hero-inner">
-      <div class="hero-copy">
-        <div class="kicker">Experience That Matters. Committed to our future.</div>
-        <h1>Engineering better schools<br/><span class="em">for Alvin ISD</span></h1>
-        <div class="subline">Alvin ISD Alumni • Engineer • Educator • Parent • Firefighter</div>
-        <p class="lead">
-          Combining engineering leadership and classroom experience to support strong schools and successful students in Alvin ISD.
-        </p>
-        <div class="hero-actions">
-          <a class="btn-hero btn-hero-blue" href="#about">Meet Fernando</a>
-          <a class="btn-hero btn-hero-red" href="https://secure.anedot.com/fernando-for-alvinisd/14ee73ca-8b72-4eb6-8afe-be679cb1826c" target="_blank" rel="noopener">Donate</a>
-        </div>
-      </div>
+    <div class="hero-banner">
+      <!-- Upload your hero graphic as header.jpg (already referenced elsewhere) -->
+      <img src="header.jpg" alt="Fernando Hinojosa for Alvin ISD Board Trustee, Position 6" />
+    </div>
 
-      <div class="hero-photo">
-        <!-- Upload a photo named hero.jpg to your repo -->
-        <img src="hero.jpg" alt="Fernando Hinojosa" />
+    <div class="hero-cta-overlay">
+        <a class="btn-hero btn-hero-blue" href="#about">Meet Fernando</a>
+        <a class="btn-hero btn-hero-red" href="https://secure.anedot.com/fernando-for-alvinisd/14ee73ca-8b72-4eb6-8afe-be679cb1826c" target="_blank" rel="noopener">Donate</a>
       </div>
     </div>
   </section>
