@@ -184,78 +184,81 @@
     .btn-outline{ background: var(--white); color: var(--blue); border-color: var(--blue); }
     .btn-outline:hover{ background:#f3f6ff; }
 
-    /* Hero (full-width banner) */
-.hero{
-  position:relative;
-  width:100%;
-  border-bottom:1px solid var(--line);
-}
-
-.hero-banner{
-  position:relative;
-  width:100%;
-  min-height:420px;
-  background-image:url('header.jpg');
-  background-size:cover;
-  background-position:center;
-  background-repeat:no-repeat;
-  display:flex;
-  align-items:flex-end;
-}
-
-.hero-actions{
-  padding:40px;
-  display:flex;
-  gap:14px;
-}
-
-.btn-hero{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  padding:12px 18px;
-  border-radius:16px;
-  font-weight:900;
-  text-decoration:none;
-  font-size:15px;
-  box-shadow:0 12px 30px rgba(0,0,0,.18);
-  border:2px solid transparent;
-  white-space:nowrap;
-}
-
-.btn-hero-blue{ background:var(--blue); color:var(--white); }
-.btn-hero-red{ background:var(--red); color:var(--white); }
-
-@media (max-width:900px){
-  .hero-banner{
-    min-height:320px;
-    background-position:65% center;
-  }
-
-  .hero-actions{
-    width:100%;
-    justify-content:center;
-    padding:20px;
-  }
-}
-      .hero-cards{ grid-template-columns: 1fr; }
-      .hero-card{ min-height: 290px; }
-      .hero-card.right{ display:none; } /* keep it clean on mobile */
-
-      .hero-card-actions{
-        left:50%;
-        transform: translateX(-50%);
-        bottom:16px;
-      }
-      .btn-hero{ padding:12px 16px; font-size:15px; }
+    /* Hero (full-width image, no crop) */
+    .hero{
+      position:relative;
+      width:100%;
+      border-bottom:1px solid var(--line);
+      background:#fff;
     }
 
-      .btn-hero{
-        width:100%;
-        padding:12px 14px;
-        font-size:15px;
-        border-radius:14px;
+    .hero-banner{
+      position:relative;
+      width:100%;
+      overflow:hidden;
+      background:#fff;
+    }
+
+    /* Show the uploaded image completely (no cropping) */
+    .hero-img{
+      width:100%;
+      height:auto;
+      display:block;
+    }
+
+    /* Two invisible flex boxes over the image */
+    .hero-overlay{
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+    }
+    .hero-overlay-inner{
+      height:100%;
+      display:flex;
+      justify-content:space-between;
+      align-items:stretch;
+    }
+    .hero-box{
+      flex:1;
+      display:flex;
+      align-items:flex-end;
+    }
+    .hero-box-right{ justify-content:flex-end; }
+
+    /* Buttons live in the LEFT box */
+    .hero-actions{
+      pointer-events:auto;
+      padding: 0 0 26px 0;
+      display:flex;
+      gap:14px;
+      justify-content:flex-start;
+    }
+
+    .btn-hero{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:12px 18px;
+      border-radius:16px;
+      font-weight:900;
+      text-decoration:none;
+      font-size:15px;
+      box-shadow:0 12px 30px rgba(0,0,0,.18);
+      border:2px solid transparent;
+      white-space:nowrap;
+    }
+
+    .btn-hero-blue{ background:var(--blue); color:var(--white); }
+    .btn-hero-blue:hover{ filter:brightness(.95); }
+    .btn-hero-red{ background:var(--red); color:var(--white); }
+    .btn-hero-red:hover{ filter:brightness(.95); }
+
+    @media (max-width:900px){
+      .hero-actions{
+        padding-bottom: 14px;
+        gap:10px;
       }
+      .btn-hero{ padding:11px 14px; font-size:14px; border-radius:14px; }
     }
 
     /* Sections */
@@ -648,9 +651,20 @@
   <!-- HERO -->
 <section class="hero" id="top">
   <div class="hero-banner" aria-label="Fernando Hinojosa campaign banner">
-    <div class="hero-actions">
-      <a class="btn-hero btn-hero-blue" href="#about">Meet Fernando</a>
-      <a class="btn-hero btn-hero-red" href="https://secure.anedot.com/fernando-for-alvinisd/14ee73ca-8b72-4eb6-8afe-be679cb1826c" target="_blank" rel="noopener">Donate</a>
+    <img class="hero-img" src="header.jpg" alt="Fernando Hinojosa for Alvin ISD Board Trustee, Position 6" />
+
+    <div class="hero-overlay">
+      <div class="wrap" style="height:100%;">
+        <div class="hero-overlay-inner">
+          <div class="hero-box hero-box-left">
+            <div class="hero-actions">
+              <a class="btn-hero btn-hero-blue" href="#about">Meet Fernando</a>
+              <a class="btn-hero btn-hero-red" href="https://secure.anedot.com/fernando-for-alvinisd/14ee73ca-8b72-4eb6-8afe-be679cb1826c" target="_blank" rel="noopener">Donate</a>
+            </div>
+          </div>
+          <div class="hero-box hero-box-right"></div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
