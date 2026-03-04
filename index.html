@@ -184,39 +184,51 @@
     .btn-outline{ background: var(--white); color: var(--blue); border-color: var(--blue); }
     .btn-outline:hover{ background:#f3f6ff; }
 
-    /* Hero (reference-style banner image + CTAs) */
+    /* Hero (two-card layout) */
     .hero{
-      position:relative;
-      padding: 0;
+      padding: 26px 0 32px;
       border-bottom: 1px solid var(--line);
-      background:#fff;
+      background: #fff;
     }
-    .hero-banner{
-      width:100%;
+
+    .hero-cards{
+      display:grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap:18px;
+      align-items:stretch;
+    }
+
+    .hero-card{
       position:relative;
+      border-radius: 22px;
       overflow:hidden;
+      border:1px solid var(--line);
+      box-shadow: 0 18px 50px rgba(0,0,0,.12);
+      background-image: url('header.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      min-height: 360px;
     }
-    .hero-banner img{
-      width:100%;
-      height:auto;
-      display:block;
-    }
-    /* Subtle overlay to keep buttons readable if needed */
-    .hero-banner::after{
+
+    .hero-card.left{ background-position: left center; }
+    .hero-card.right{ background-position: right center; }
+
+    /* Soft fade to keep buttons readable on the left card */
+    .hero-card.left::after{
       content:"";
       position:absolute;
       inset:0;
-      background: linear-gradient(90deg, rgba(255,255,255,.10), rgba(255,255,255,0));
+      background: linear-gradient(90deg, rgba(255,255,255,.05), rgba(255,255,255,0) 55%);
       pointer-events:none;
     }
 
-    .hero-cta-overlay{
+    .hero-card-actions{
       position:absolute;
-      bottom:30px;
-      left:30px;
+      left:22px;
+      bottom:22px;
       display:flex;
       gap:12px;
-      flex-wrap:wrap;
+      align-items:center;
       z-index:2;
     }
 
@@ -229,26 +241,28 @@
       font-weight:900;
       text-decoration:none;
       font-size:15px;
-      box-shadow:0 12px 30px rgba(0,0,0,.25);
+      box-shadow:0 12px 30px rgba(0,0,0,.18);
       border:2px solid transparent;
+      white-space:nowrap;
     }
-
     .btn-hero-blue{ background: var(--blue); color: var(--white); }
     .btn-hero-blue:hover{ filter:brightness(.95); }
-
     .btn-hero-red{ background: var(--red); color: var(--white); }
     .btn-hero-red:hover{ filter:brightness(.95); }
 
-    @media (max-width:900px){
-      .hero-cta-overlay{
+    @media (max-width: 900px){
+      .hero{ padding: 18px 0 22px; }
+      .hero-cards{ grid-template-columns: 1fr; }
+      .hero-card{ min-height: 290px; }
+      .hero-card.right{ display:none; } /* keep it clean on mobile */
+
+      .hero-card-actions{
         left:50%;
-        transform:translateX(-50%);
-        bottom:14px;
-        flex-direction:column;
-        width:90%;
-        max-width:320px;
-        gap:10px;
+        transform: translateX(-50%);
+        bottom:16px;
       }
+      .btn-hero{ padding:12px 16px; font-size:15px; }
+    }
 
       .btn-hero{
         width:100%;
@@ -645,16 +659,17 @@
   </div>
   </header>
 
-  <!-- HERO (reference-style banner) -->
+  <!-- HERO (two-card layout) -->
   <section class="hero" id="top">
-    <div class="hero-banner">
-      <!-- Upload your hero graphic as header.jpg (already referenced elsewhere) -->
-      <img src="header.jpg" alt="Fernando Hinojosa for Alvin ISD Board Trustee, Position 6" />
-    </div>
-
-    <div class="hero-cta-overlay">
-        <a class="btn-hero btn-hero-blue" href="#about">Meet Fernando</a>
-        <a class="btn-hero btn-hero-red" href="https://secure.anedot.com/fernando-for-alvinisd/14ee73ca-8b72-4eb6-8afe-be679cb1826c" target="_blank" rel="noopener">Donate</a>
+    <div class="wrap">
+      <div class="hero-cards">
+        <div class="hero-card left" aria-label="Campaign hero graphic">
+          <div class="hero-card-actions">
+            <a class="btn-hero btn-hero-blue" href="#about">Meet Fernando</a>
+            <a class="btn-hero btn-hero-red" href="https://secure.anedot.com/fernando-for-alvinisd/14ee73ca-8b72-4eb6-8afe-be679cb1826c" target="_blank" rel="noopener">Donate</a>
+          </div>
+        </div>
+        <div class="hero-card right" aria-hidden="true"></div>
       </div>
     </div>
   </section>
