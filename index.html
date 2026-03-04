@@ -188,8 +188,9 @@
     .hero{
       position:relative;
       width:100%;
-      border-bottom:1px solid var(--line);
+      border-bottom:0;
       background:#fff;
+      margin:0;
     }
 
     .hero-banner{
@@ -197,6 +198,8 @@
       width:100%;
       overflow:hidden;
       background:#fff;
+      line-height:0; /* remove any baseline whitespace */
+      font-size:0;   /* remove any inline gaps */
     }
 
     /* Show the uploaded image completely (no cropping) */
@@ -204,6 +207,7 @@
       width:100%;
       height:auto;
       display:block;
+      vertical-align:top; /* extra safety for whitespace */
     }
 
     /* Two invisible flex boxes over the image */
