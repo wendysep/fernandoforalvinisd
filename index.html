@@ -184,74 +184,60 @@
     .btn-outline{ background: var(--white); color: var(--blue); border-color: var(--blue); }
     .btn-outline:hover{ background:#f3f6ff; }
 
-    /* Hero (two-card layout) */
-    .hero{
-      padding: 26px 0 32px;
-      border-bottom: 1px solid var(--line);
-      background: #fff;
-    }
+    /* Hero (full-width banner) */
+.hero{
+  position:relative;
+  width:100%;
+  border-bottom:1px solid var(--line);
+}
 
-    .hero-cards{
-      display:grid;
-      grid-template-columns: 1.25fr .75fr;
-      gap:18px;
-      align-items:stretch;
-    }
+.hero-banner{
+  position:relative;
+  width:100%;
+  min-height:420px;
+  background-image:url('header.jpg');
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+  display:flex;
+  align-items:flex-end;
+}
 
-    .hero-card{
-      position:relative;
-      border-radius: 22px;
-      overflow:hidden;
-      border:1px solid var(--line);
-      box-shadow: 0 18px 50px rgba(0,0,0,.12);
-      background-image: url('header.jpg');
-      background-size: cover;
-      background-repeat: no-repeat;
-      min-height: 360px;
-    }
+.hero-actions{
+  padding:40px;
+  display:flex;
+  gap:14px;
+}
 
-    .hero-card.left{ background-position: left center; }
-    .hero-card.right{ background-position: right center; }
+.btn-hero{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:12px 18px;
+  border-radius:16px;
+  font-weight:900;
+  text-decoration:none;
+  font-size:15px;
+  box-shadow:0 12px 30px rgba(0,0,0,.18);
+  border:2px solid transparent;
+  white-space:nowrap;
+}
 
-    /* Soft fade to keep buttons readable on the left card */
-    .hero-card.left::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background: linear-gradient(90deg, rgba(255,255,255,.05), rgba(255,255,255,0) 55%);
-      pointer-events:none;
-    }
+.btn-hero-blue{ background:var(--blue); color:var(--white); }
+.btn-hero-red{ background:var(--red); color:var(--white); }
 
-    .hero-card-actions{
-      position:absolute;
-      left:22px;
-      bottom:22px;
-      display:flex;
-      gap:12px;
-      align-items:center;
-      z-index:2;
-    }
+@media (max-width:900px){
+  .hero-banner{
+    min-height:320px;
+    background-position:65% center;
+  }
 
-    .btn-hero{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding:12px 18px;
-      border-radius:16px;
-      font-weight:900;
-      text-decoration:none;
-      font-size:15px;
-      box-shadow:0 12px 30px rgba(0,0,0,.18);
-      border:2px solid transparent;
-      white-space:nowrap;
-    }
-    .btn-hero-blue{ background: var(--blue); color: var(--white); }
-    .btn-hero-blue:hover{ filter:brightness(.95); }
-    .btn-hero-red{ background: var(--red); color: var(--white); }
-    .btn-hero-red:hover{ filter:brightness(.95); }
-
-    @media (max-width: 900px){
-      .hero{ padding: 18px 0 22px; }
+  .hero-actions{
+    width:100%;
+    justify-content:center;
+    padding:20px;
+  }
+}
       .hero-cards{ grid-template-columns: 1fr; }
       .hero-card{ min-height: 290px; }
       .hero-card.right{ display:none; } /* keep it clean on mobile */
@@ -659,20 +645,15 @@
   </div>
   </header>
 
-  <!-- HERO (two-card layout) -->
-  <section class="hero" id="top">
-    <div class="wrap">
-      <div class="hero-cards">
-        <div class="hero-card left" aria-label="Campaign hero graphic">
-          <div class="hero-card-actions">
-            <a class="btn-hero btn-hero-blue" href="#about">Meet Fernando</a>
-            <a class="btn-hero btn-hero-red" href="https://secure.anedot.com/fernando-for-alvinisd/14ee73ca-8b72-4eb6-8afe-be679cb1826c" target="_blank" rel="noopener">Donate</a>
-          </div>
-        </div>
-        <div class="hero-card right" aria-hidden="true"></div>
-      </div>
+  <!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-banner" aria-label="Fernando Hinojosa campaign banner">
+    <div class="hero-actions">
+      <a class="btn-hero btn-hero-blue" href="#about">Meet Fernando</a>
+      <a class="btn-hero btn-hero-red" href="https://secure.anedot.com/fernando-for-alvinisd/14ee73ca-8b72-4eb6-8afe-be679cb1826c" target="_blank" rel="noopener">Donate</a>
     </div>
-  </section>
+  </div>
+</section>
 
     <!-- FULL-WIDTH EXPERIENCE PILLS -->
     <div class="pill-band">
