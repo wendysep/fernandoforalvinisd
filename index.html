@@ -373,7 +373,16 @@
       grid-template-columns: 1fr 1fr;
       gap:16px;
     }
-    @media (max-width: 900px){ .grid-2{ grid-template-columns:1fr; } }
+    .grid-3{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:16px;
+      align-items:stretch;
+    }
+    @media (max-width: 900px){
+      .grid-2{ grid-template-columns:1fr; }
+      .grid-3{ grid-template-columns:1fr; }
+    }
     .card{
       border:1px solid var(--line);
       border-radius: var(--radius);
@@ -665,6 +674,7 @@
 
         <nav>
           <a href="#about">About</a>
+          <a href="#priorities">Priorities</a>
           <a href="#mission">Mission &amp; Vision</a>
           <a href="#get-involved">Donate &amp; Volunteer</a>
           <a href="#contact">Contact</a>
@@ -697,6 +707,7 @@
       <div class="mobile-menu-inner">
         <div class="mobile-links">
           <a href="#about">About</a>
+          <a href="#priorities">Priorities</a>
           <a href="#mission">Mission &amp; Vision</a>
           <a href="#get-involved">Donate &amp; Volunteer</a>
           <a href="#contact">Contact</a>
@@ -737,7 +748,7 @@
         </p>
         <div class="hero-actions">
           <a class="btn-hero btn-hero-blue" href="#about">Meet Fernando</a>
-          <a class="btn-hero btn-hero-red" href="https://secure.anedot.com/fernando-for-alvinisd/14ee73ca-8b72-4eb6-8afe-be679cb1826c" target="_blank" rel="noopener">Donate</a>
+          <a class="btn-hero btn-hero-red" href="https://www.facebook.com/HinojosaForAlvinISD" target="_blank" rel="noopener">Follow My Campaign</a>
         </div>
       </div>
 
@@ -844,10 +855,53 @@
       </div>
     </section>
 
+    <!-- PRIORITIES -->
+    <section id="priorities">
+      <div class="wrap">
+        <div class="kicker">Clear priorities for strong schools</div>
+        <h2 class="section-title">Priorities for Alvin ISD</h2>
+
+        <div class="grid-3">
+          <div class="card">
+            <div class="accent">
+              <span class="dot" style="background: var(--blue); box-shadow: 0 0 0 4px rgba(0,74,173,.12);"></span>
+              Strong Academics and Preparing Students for the Future
+            </div>
+            <ul style="margin:10px 0 0; padding-left:18px; color:var(--muted);">
+              <li>Move Alvin ISD from a B rated district to an A rated district by improving academic outcomes across all schools</li>
+              <li>Ensure every student is prepared for the future, including economically disadvantaged students and those in special education</li>
+              <li>Expand STEM, career and technical education, and hands-on learning opportunities, while partnering with local businesses and organizations to provide real-world experiences</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="accent"><span class="dot"></span>Support for Teachers and Staff</div>
+            <ul style="margin:10px 0 0; padding-left:18px; color:var(--muted);">
+              <li>Ensure teachers have the resources and support they need while reducing unnecessary burdens</li>
+              <li>Recruit, retain, and invest in high-quality educators who make a difference in the classroom</li>
+              <li>Keep our schools safe with clear processes and strong communication so students, staff, and families feel informed and supported</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="accent">
+              <span class="dot" style="background: var(--blue); box-shadow: 0 0 0 4px rgba(0,74,173,.12);"></span>
+              Responsible Leadership and Community Commitment
+            </div>
+            <ul style="margin:10px 0 0; padding-left:18px; color:var(--muted);">
+              <li>Be responsible with taxpayer dollars by doing more with what we already have while planning for continued growth</li>
+              <li>Bring real-world problem solving, transparency, and accountability to board decisions, including supporting a strong transition to a new superintendent</li>
+              <li>Be present, engaged, and committed to serving all students, families, staff, and our community, and ready to put in the work to make our schools better</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- MISSION & VISION -->
     <section id="mission">
       <div class="wrap">
-        <div class="kicker">Clear priorities for strong schools</div>
+        <div class="kicker">Guided by service and accountability</div>
         <h2 class="section-title">Mission &amp; Vision</h2>
         
 
